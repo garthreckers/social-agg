@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
+import keys
 from cache import Cache
 from flask import Flask, request
 APP = Flask(__name__)
 
-APP.debug = True
+if keys.IS_PRODUCTION:
+	APP.debug = True
 
 @APP.route("/")
 def hello():
