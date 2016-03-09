@@ -43,8 +43,8 @@ class Cache(object):
 		self.twitterBuild()
 		self.instagramBuild()
 
-		fh = self.fileHousekeeping(self.file_path):
-		
+		fh = self.fileHousekeeping(self.file_path)
+
 		if not fh:
 			if self.checkMod(self.file_path):
 				return
