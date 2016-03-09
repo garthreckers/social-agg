@@ -1,4 +1,6 @@
 keys.py
 /hashtags/*
+!/hashtags/.hashtag_folder_placeholder
 /__pycache__
 *.pyc
+.DS_Store
