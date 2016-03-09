@@ -43,7 +43,11 @@ class Cache(object):
 		self.twitterBuild()
 		self.instagramBuild()
 
-		self.fileHousekeeping(self.file_path)
+		fh = self.fileHousekeeping(self.file_path):
+		
+		if not fh:
+			if self.checkMod(self.file_path):
+				return
 
 		combo = {}
 		with open(self.twitter_file_path, "r+") as f:
@@ -55,10 +59,9 @@ class Cache(object):
 		combo_ordered = OrderedDict(sorted(combo.items(), reverse=True))
 		combo_json = json.dumps(combo_ordered)
 
-		if self.checkMod(self.file_path):
-
-			with open(self.file_path, "w+") as fw:
-				fw.write(combo_json)
+		
+		with open(self.file_path, "w+") as fw:
+			fw.write(combo_json)
 		
 		return
 
@@ -142,6 +145,7 @@ class Cache(object):
 			pprint("make file")
 			# Create file if it does not exist
 			with open(path, "w+") as fr:
-				pass
+				return True
+		return False
 
 	
