@@ -16,7 +16,7 @@ def hello():
 
 @APP.route("/hashtag/<input_hashtag>", methods=['POST'])
 def hash_t(input_hashtag):
-	if request.form['api_key'] = TEST_POST_PASS:
+	if request.form['api_key'] == TEST_POST_PASS:
 		c = Cache(input_hashtag)
 		cc = c.buildIt()
 		cr = c.readIt()
