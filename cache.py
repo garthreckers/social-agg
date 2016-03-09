@@ -43,11 +43,10 @@ class Cache(object):
 		self.twitterBuild()
 		self.instagramBuild()
 
-		fh = self.fileHousekeeping(self.file_path)
+		if os.path.exists(self.file_path):
+			self.checkMod(self.file_path)
 
-		if not fh:
-			if self.checkMod(self.file_path):
-				return
+		self.fileHousekeeping(self.file_path)
 
 		combo = {}
 		with open(self.twitter_file_path, "r+") as f:
@@ -134,10 +133,10 @@ class Cache(object):
 		mtime = dt.datetime.fromtimestamp(st.st_mtime)
 		if mtime > self.mod_intv:
 			pprint("DID NOT MOD")
-			return False
+			return
 
 		pprint("DID MOD***********")
-		return True
+		return
 
 	def fileHousekeeping(self, path):
 		# Check to see if file exists
@@ -145,7 +144,6 @@ class Cache(object):
 			pprint("make file")
 			# Create file if it does not exist
 			with open(path, "w+") as fr:
-				return True
-		return False
+				pass
 
 	
