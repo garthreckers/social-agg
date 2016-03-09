@@ -16,7 +16,7 @@ class Twitter:
 		else:
 			hashtag.replace('#', '%23')
 
-		base_url_raw = "https://api.twitter.com/1.1/search/tweets.json?q=" + hashtag
+		base_url_raw = "https://api.twitter.com/1.1/search/tweets.json?q=" + hashtag + "&count=100"
 		base_url = base_url_raw.encode("utf-8")
 			
 		consumer = oauth2.Consumer(key=keys.TWITTER_CONSUMER_KEY, secret=keys.TWITTER_CONSUMER_SECRET)

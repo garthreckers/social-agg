@@ -27,10 +27,19 @@ class Cache(object):
 		self.mod_intv = self.time - dt.timedelta(minutes=1)
 
 
-	def readIt(self):
-		read = ""
+	def readIt(self, **kwargs):
+		read = {}
 		with open(self.file_path, "r+") as f:
-			read = f.read()
+			raw = f.read()
+		"""
+		if kwargs['rt'] == False:
+			for r in json.loads(raw):
+				if r['text'].startswith("RT "):
+					continue
+				raw.append(r)
+		"""
+
+		read = raw
 
 		return read
 		
