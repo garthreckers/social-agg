@@ -1,0 +1,1 @@
+Social media aggregator to cache a hashtag feed from multiple social media sites. Right now there is only support for Twitter and Instagram. More to come.
