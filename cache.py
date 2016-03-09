@@ -43,7 +43,7 @@ class Cache(object):
 		self.twitterBuild()
 		self.instagramBuild()
 
-		fileHousekeeping(self.file_path)
+		self.fileHousekeeping(self.file_path)
 
 		combo = {}
 		with open(self.twitter_file_path, "r+") as f:
