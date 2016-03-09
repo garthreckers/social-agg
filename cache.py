@@ -43,6 +43,8 @@ class Cache(object):
 		self.twitterBuild()
 		self.instagramBuild()
 
+		fileHousekeeping(self.file_path)
+
 		combo = {}
 		with open(self.twitter_file_path, "r+") as f:
 			combo.update(json.loads(f.read()))
