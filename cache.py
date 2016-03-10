@@ -23,7 +23,7 @@ class Cache(object):
 		self.twitter_file_path = self.hash_path + "/" + self.twitter_file_name
 		self.file_path = self.hash_path + "/" + self.file_name
 		self.time = dt.datetime.now()
-		self.mod_intv = self.time - dt.timedelta(minutes=30)
+		self.mod_intv = self.time - dt.timedelta(minutes=0)
 
 
 	def readIt(self, **kwargs):
@@ -103,7 +103,7 @@ class Cache(object):
 
 	def _instagramBuild(self):
 
-		self._cfileHousekeeping(self.instagram_file_path)
+		self._fileHousekeeping(self.instagram_file_path)
 
 		new = instagram.getHashtag(self.hashtag)
 
