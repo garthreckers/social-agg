@@ -103,7 +103,7 @@ class Cache(object):
 
 	def _instagramBuild(self):
 
-		self._fileHousekeeping(self.instagram_file_path)
+		self._cfileHousekeeping(self.instagram_file_path)
 
 		new = instagram.getHashtag(self.hashtag)
 
