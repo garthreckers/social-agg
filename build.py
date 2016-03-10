@@ -3,7 +3,8 @@ import os
 from pprint import pprint
 from cache import Cache
 
-hashtags = os.listdir('hashtags')
+abpath = os.path.dirname(os.path.abspath(__file__))
+hashtags = os.listdir(abpath + '/hashtags')
 
 for h in hashtags:
 	if h.startswith("."):

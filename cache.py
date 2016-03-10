@@ -14,7 +14,8 @@ class Cache(object):
 		else:
 			self.hashtag = hashtag
 
-		self.hash_root_path = "hashtags"
+		a_path = os.path.dirname(os.path.abspath(__file__))
+		self.hash_root_path = a_path + "/hashtags"
 		self.hash_path = self.hash_root_path + "/" + self.hashtag
 		self.instagram_file_name = "instagram.json"
 		self.twitter_file_name = "twitter.json"
@@ -78,7 +79,7 @@ class Cache(object):
 
 		new = twitter.getHashtag(self.hashtag)
 
-		pprint("build twitter fired")
+		#pprint("build twitter fired")
 
 		old = None
 		
@@ -107,7 +108,7 @@ class Cache(object):
 
 		new = instagram.getHashtag(self.hashtag)
 
-		pprint("build instagram fired")
+		#pprint("build instagram fired")
 
 		old = None
 		
@@ -138,16 +139,16 @@ class Cache(object):
 		st = os.stat(path)    
 		mtime = dt.datetime.fromtimestamp(st.st_mtime)
 		if mtime > self.mod_intv:
-			pprint("DID NOT MOD")
+			#pprint("DID NOT MOD")
 			return
 
-		pprint("DID MOD***********")
+		#pprint("DID MOD***********")
 		return
 
 	def _fileHousekeeping(self, path):
 		# Check to see if file exists
 		if not os.path.exists(path):
-			pprint("make file")
+			#pprint("make file")
 			# Create file if it does not exist
 			with open(path, "w+") as fr:
 				pass
