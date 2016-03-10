@@ -23,7 +23,7 @@ class Cache(object):
 		self.twitter_file_path = self.hash_path + "/" + self.twitter_file_name
 		self.file_path = self.hash_path + "/" + self.file_name
 		self.time = dt.datetime.now()
-		self.mod_intv = self.time - dt.timedelta(minutes=1)
+		self.mod_intv = self.time - dt.timedelta(minutes=30)
 
 
 	def readIt(self, **kwargs):
@@ -48,13 +48,13 @@ class Cache(object):
 		if not os.path.exists(self.hash_path):
 			os.makedirs(self.hash_path)
 
-		self.twitterBuild()
-		self.instagramBuild()
-
 		if os.path.exists(self.file_path):
-			self.checkMod(self.file_path)
+			self._checkMod(self.file_path)
 
-		self.fileHousekeeping(self.file_path)
+		self._twitterBuild()
+		self._instagramBuild()
+
+		self._fileHousekeeping(self.file_path)
 
 		combo = {}
 		with open(self.twitter_file_path, "r+") as f:
@@ -72,9 +72,9 @@ class Cache(object):
 		
 		return
 
-	def twitterBuild(self):
+	def _twitterBuild(self):
 
-		self.fileHousekeeping(self.twitter_file_path)
+		self._fileHousekeeping(self.twitter_file_path)
 
 		new = twitter.getHashtag(self.hashtag)
 
@@ -101,9 +101,9 @@ class Cache(object):
 		return
 
 
-	def instagramBuild(self):
+	def _instagramBuild(self):
 
-		self.fileHousekeeping(self.instagram_file_path)
+		self._fileHousekeeping(self.instagram_file_path)
 
 		new = instagram.getHashtag(self.hashtag)
 
@@ -129,7 +129,7 @@ class Cache(object):
 
 		return
 
-	def checkMod(self, path):
+	def _checkMod(self, path):
 		"""
 			This function will return False if the file was 
 			modified within the mod_intv.
@@ -144,7 +144,7 @@ class Cache(object):
 		pprint("DID MOD***********")
 		return
 
-	def fileHousekeeping(self, path):
+	def _fileHousekeeping(self, path):
 		# Check to see if file exists
 		if not os.path.exists(path):
 			pprint("make file")
