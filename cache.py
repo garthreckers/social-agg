@@ -2,8 +2,7 @@ import os
 import json
 import datetime
 from collections import OrderedDict
-from socialclasses.sa_twitter import Twitter
-from socialclasses.sa_instagram import Instagram
+from apis import instagram, twitter
 from pprint import pprint
 import datetime as dt
 
@@ -77,8 +76,7 @@ class Cache(object):
 
 		self.fileHousekeeping(self.twitter_file_path)
 
-		twit = Twitter()
-		new = twit.getHashtag(self.hashtag)
+		new = twitter.getHashtag(self.hashtag)
 
 		pprint("build twitter fired")
 
@@ -107,7 +105,6 @@ class Cache(object):
 
 		self.fileHousekeeping(self.instagram_file_path)
 
-		instagram = Instagram()
 		new = instagram.getHashtag(self.hashtag)
 
 		pprint("build instagram fired")
