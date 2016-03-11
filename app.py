@@ -39,4 +39,4 @@ def hash_t(input_hashtag):
 
 
 if __name__ == "__main__":
-	APP.run('0.0.0.0')
+	APP.run(host='0.0.0.0')
